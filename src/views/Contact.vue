@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-10 11:22:32
- * @LastEditTime: 2020-04-10 21:56:08
+ * @LastEditTime: 2020-04-12 14:42:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /tt/web/src/views/Messages.vue
@@ -13,17 +13,18 @@
       <!-- <img :src="banner" alt=""> -->
     </div>
     <section class="content">
-      <contentslot>
-        <span slot="title">联系我们</span>
-        <article slot="article">
-          this is 联系我们
-        </article>
-      </contentslot>
+      <ul class="adr-info">
+        <li>地址: 合肥市黄山路西环中心广场</li>
+        <li>电话: 13931140805 15075171310</li>
+        <li>Email: 2212322343@qq.com 2050001400@qq.com</li>
+      </ul>
+      <div class="map" :style="map">
+        
+      </div>
     </section>
   </div>
 </template>
 <script>
-import contentslot from '@/components/Content.vue';
 
 export default {
   name:'contact',
@@ -33,31 +34,31 @@ export default {
         backgroundImage: "url(" + require("../assets/images/about.jpg") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
+      },
+      map: {
+        backgroundImage: "url(" + require("../assets/images/map-7.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
       }
     }
-  },
-  components:{
-    contentslot
   }
 }
 </script>
 <style lang="less" scoped>
-  .banner{
-    width: 100%;
-    height: 380px;
-    // overflow: hidden;
-  }
   .flex{
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .content{
-    width: 70%;
-    margin: 0 auto;
-    padding: 40px 0;
+    padding: 10px;
+    font-size: 14px;
   }
   .article{
     flex: 1;
+  }
+  .map{
+    width: 100%;
+    height: 300px;
   }
 </style>

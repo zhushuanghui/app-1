@@ -8,11 +8,6 @@
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
-      <!-- <swiper :options="swiperOptionThumbs" id="thumbs" class="gallery-thumbs" ref="swiperThumbs">
-        <swiper-slide  v-for="banner in bannerImgs" :key="banner">
-          <img class="small-item" :src="banner" />
-        </swiper-slide>
-      </swiper> -->
     </div>
 
     <div class="detail">
@@ -20,7 +15,7 @@
         <p class="title">服务范围简介</p>
         <p class="desc">为您量身定制的互联网服务,为您的企业插上互联网翅膀</p>
       </div>
-      <ul class="content">
+      <ul class="serve-content">
         <li v-for="item in service" :key="item">
           <div class="img">
 
@@ -38,16 +33,16 @@
       <!-- <ul class="content news">
         <li v-for="item in news" :key="item">{{item}}</li>
       </ul> -->
-      <ul class="content news">
+      <ul class="serve-content news">
         <el-card :body-style="{ padding: '0px' }" v-for="item in news" :key="item" >
           <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-              <!-- this is a test -->
+          <div class="img-title">
+            <span >好吃的汉堡</span>
+            <!-- <div class="bottom clearfix">
+              this is a test -->
               <!-- <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">操作按钮</el-button> -->
-            </div>
+              <el-button type="text" class="button">操作按钮</el-button>
+            </div> -->
           </div>
         </el-card>
       </ul>
@@ -61,8 +56,8 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 // import { videoPlayer } from 'vue-video-player'
 // import 'video.js/dist/video-js.css'
-import img1 from '@/assets/images/1.jpg'
-import img2 from '@/assets/images/2.jpg'
+import img1 from '@/assets/images/banner-2.jpeg'
+import img2 from '@/assets/images/banner-3.jpeg'
 import video1 from '@/assets/videos/1.mp4'
 import video2 from '@/assets/videos/2.mp4'
 // import video3 from '@/assets/videos/3.mov'
@@ -85,40 +80,21 @@ export default {
         observer: true,
         observeParents: true,
         autoplay: true,
-        // autoplay: {
-        //   // delay: 3000,
-        //   // disableOnInteraction: false
-        // },
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
-        }
-      },
-      // swiperOptionThumbs: {
-      //   spaceBetween: 10,
-      //   autoplay: false,
-      //   // centeredSlides: true,
-      //   slidesPerView: 4,
-      //   // touchRatio: 0.2,
-      //   slideToClickedSlide: true,
-      //   watchSlidesVisibility: true
-      // }
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+        },
+        // effect: 'fade',
+        // fadeEffect: {
+        //   crossFade: true
+        // }
+      }
     }
   },
   components: {
     Swiper,
     SwiperSlide
-  },
-  mounted () {
-    // this.$nextTick(async () => {
-    //   const swiperTop = await this.$refs.swiperTop.$swiper
-    //   const swiperThumbs = await this.$refs.swiperThumbs.$swiper
-    //   console.log(swiperTop, swiperThumbs, this.$refs.swiperTop)
-    //   swiperTop.controller.control = swiperThumbs
-    //   swiperThumbs.controller.control = swiperTop
-    // })
   }
-
 }
 </script>
 
@@ -127,12 +103,10 @@ export default {
     width:100%;
   }
   .my-swiper{
-    position: relative;
+    margin-bottom: 20px;
   }
   #bigBanner {
-    height: calc(100vh - 80px);
-    min-height: 700px;
-
+    height: 300px;
     .swiper-slide{
       height: 100%;
     }
@@ -145,56 +119,44 @@ export default {
       height: 100%;
     }
   }
-  #thumbs{
-    position: absolute;
-    bottom: 20px;
-    width: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-    .small-item{
-      width: 200px;
-      height: 100px;
-    }
-    .swiper-slide {
-      width: 25%;
-      height: 100%;
-      opacity: 0.4;
-    }
-    .swiper-slide-active {
-      opacity: 1;
-    }
-  }
   .detail{
+    padding: 0 10px;
     .top{
       text-align: center;
-      padding-top: 40px;
-
+      // padding-top: 20px;
       .title{
-        font-size: 26px;
+        font-size: 16px;
       }
       .desc{
-        font-size: 17px;
+        font-size: 12px;
       }
     }
-    .content{
-      margin-top: 40px;
+    .serve-content{
       display: flex;
       justify-content: space-evenly;
+      p{
+        font-size: 14px;
+      }
     }
     li{
       text-align: center;
       .img{
-        width: 180px;
-        height: 180px;
+        width: 80px;
+        height: 80px;
         background: #ccc;
         border-radius: 50%;
-        line-height: 180px;
       }
     }
     .el-card{
       img:hover{
         opacity: 0.6;
         cursor: pointer;
+      }
+      .img-title{
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 14px;
       }
     }
   }

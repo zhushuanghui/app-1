@@ -1,42 +1,44 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-07 21:42:48
- * @LastEditTime: 2020-04-10 21:49:49
+ * @LastEditTime: 2020-04-12 14:35:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /web/src/views/Home.vue
  -->
 
 <template>
-  <div class="index">
-    <el-container>
-      <el-header height="80px">
+  <div  id="home" class="index">
+      <header height="60px">
         <div class="logo">
           <img :src= "logo"  alt="">
         </div>
-        <div class="nav-menu">
+        <div class="right-top">
           <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" router>
           <el-menu-item index="/home" >网站首页</el-menu-item>
           <el-menu-item index="/about">关于我们</el-menu-item>
-          <el-menu-item index="/culture">企业文化</el-menu-item>
-          <el-menu-item index="/news">新闻中心</el-menu-item>
-          <el-menu-item index="/products">产品中心</el-menu-item>
-          <el-menu-item index="/messages">在线留言</el-menu-item>
+          <el-menu-item index="/cases">案例</el-menu-item>
+          <el-menu-item index="/Consultation">咨询</el-menu-item>
           <el-menu-item index="/contact">联系我们</el-menu-item>
           </el-menu>
         </div>
-      </el-header>
-      <el-main>
+      </header>
+      <content>
         <router-view></router-view>
-      </el-main>
-      <el-footer>Footer</el-footer>
-    </el-container>
+      </content>
+      <!-- <footer class="footer">
+        <ul>
+          <li>地址: 合肥市黄山路西环中心广场</li>
+          <li>电话: 13931140805 15075171310</li>
+          <li>Email: 2212322343@qq.com 2050001400@qq.com</li>
+        </ul>
+      </footer> -->
   </div>
 </template>
 
 <script>
 // // @ is an alias to /src
-import logo from '@/assets/images/logo-22.jpg'
+import logo from '@/assets/images/logo-app.png'
 
 export default {
   name: 'Home',
@@ -45,45 +47,73 @@ export default {
       logo,
       activeIndex: '/home'
     }
+  },
+  watch: {
+    '$route.path': function (newVal, oldVal) {
+      this.activeIndex = this.$route.path;
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
+    }
+  },
+  mounted () {
+    // 检测浏览器路由改变页面不刷新问题,hash模式的工作原理是hashchange事件
+    window.addEventListener('hashchange', () => {
+      let currentPath = window.location.hash.slice(1)
+        this.activeIndex = currentPath;
+    }, false)
+    this.activeIndex = this.$route.path;
   }
 }
 
 </script>
 <style lang="less" scoped>
-  .el-header{
+  #home{
+    height: 100%;
+    overflow: auto;
+  }
+  header{
     // height: 80px !important;
-    min-width: 1100px;
-    width: 65%;
+    width: 100%;
     margin:0 auto;
-    padding-top:20px;
-    line-height: 60px;
+    padding: 0 10px;
+    // padding-top:20px;
+    // padding: 20px 10px 0 10px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    overflow: hidden;
 
     .logo{
-      height: 60px;
+      width: 60px;
+      // height: 40px;
+      // height: 60px;
       overflow: hidden;
 
       img{
-        height: 100%;
+        width: 100%;
+        height: auto;
       }
     }
+    .el-menu-item{
+      padding: 0 10px;
+    }
   }
-  .el-main{
-    min-height: calc(100vh - 260px);
+  .el-menu.el-menu--horizontal{
+    border-bottom:none
+  }
+  .el-menu--horizontal>.el-menu-item{
+    height: 40px;
+    line-height: 40px;
+  }
+  content{
+    min-height: calc(100vh - 60px);
     margin:0;
     padding: 0;
   }
-  footer{
-    padding: 30px 0 0 0;
+  .footer{
+    padding: 10px;
     background: #161616;
     color: #CCC;
-    font-size: 14px;
-    min-height: 180px;
-    border-bottom: 1px solid #313131;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(49, 49, 49);
-    padding-bottom: 20px;
+    font-size: 12px;
   }
 </style>

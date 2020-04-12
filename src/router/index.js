@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Index from '../views/Index.vue'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
+import DetailPage from '../views/DetailPage.vue'
 
 Vue.use(VueRouter)
 
@@ -24,14 +25,24 @@ const routes = [
         component: About
       },
       {
-        path: '/culture',
-        name: 'Culture',
-        component: () => import('../views/Culture.vue')
+        path: '/consultation',
+        name: 'Consultation',
+        component: () => import('../views/Consultation.vue')
       },
       {
-        path: '/news',
-        name: 'News',
-        component: () => import('../views/News.vue')
+        path: '/cases',
+        name: 'Cases',
+        component: () => import('../views/Cases.vue'),
+        children:[
+          {
+            path: "/cases/detail/:id",
+            component: DetailPage,
+            name: 'detailPage',
+            meta: {
+              title: '详情'
+            }
+          }
+        ]
       },
       {
         path: '/products',
@@ -39,21 +50,22 @@ const routes = [
         component: () => import('../views/Products.vue')
       },
       {
-        path: '/messages',
-        name: 'Messages',
-        component: () => import('../views/Messages.vue')
-      },
-      {
         path: '/contact',
         name: 'Contact',
         component: () => import('../views/Contact.vue')
-      }
+      },
+      // {
+      //   path: '/detail',
+      //   name: 'DetailPage',
+      //   component: () => import('../views/DetailPage.vue')
+      // }
     ]
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode:'hash'
 })
 
 export default router

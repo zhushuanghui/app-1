@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Button, Container, Main, Header, Footer, Menu, MenuItem, Carousel, CarouselItem,
-Card, Col, Row, Divider, Breadcrumb, BreadcrumbItem,pagination } from 'element-ui'
+Card, Col, Row, Divider, Breadcrumb, BreadcrumbItem,pagination,Form, FormItem, Input,Tabs,TabPane} from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Container)
@@ -18,4 +18,9 @@ Vue.use(Divider)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(pagination)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Tabs)
+Vue.use(TabPane)
 // Vue.use(Button)
