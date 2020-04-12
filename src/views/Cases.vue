@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-10 11:22:32
- * @LastEditTime: 2020-04-12 14:45:04
+ * @LastEditTime: 2020-04-12 16:56:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /tt/web/src/views/Messages.vue
@@ -33,7 +33,7 @@
                 <div class="desc">
                   2011年11月25日，我司互联网信息服务有限公司在与韶关移动分公司洽谈后，移动对我司在移动通信行业的应用产品表示强烈的合作意向，并成功成为移动的采购项目
                 </div>
-                <p class="read"><router-link :to="'/cases/detail/'+item">阅读全文</router-link></p>
+                <p class="read"><a href="javascript:;">阅读全文</a></p>
               </li>
             </ul>
             <!-- <div class="pagination">
